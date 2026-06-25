@@ -833,6 +833,52 @@
       .event-date { letter-spacing: .04em; }
     }
 
+  
+    .download-panel {
+      display: grid;
+      align-content: center;
+      min-height: 100%;
+    }
+
+    .store-buttons {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 0;
+    }
+
+    .store-button {
+      min-height: 76px;
+      border-radius: 18px;
+    }
+
+    .store-button small {
+      font-size: .82rem;
+    }
+
+    .store-button span:last-child {
+      font-size: 1.28rem;
+    }
+
+    .download-reminder {
+      margin: 18px auto 0;
+      max-width: 430px;
+      background: rgba(207,31,46,.08);
+      color: var(--navy);
+      border: 1px solid rgba(207,31,46,.18);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 900;
+      line-height: 1.35;
+    }
+
+    .code {
+      font-size: clamp(5.2rem, 11vw, 7.4rem);
+      padding-top: 24px;
+      padding-bottom: 28px;
+    }
+
   </style>
 </head>
 
@@ -867,7 +913,7 @@
 
           <section class="panel download-panel" aria-labelledby="download-title">
             <p class="device-note" id="device-note">Recommended for your device</p>
-            <div class="download-title" id="download-title">Scan to Download<br><strong>IGNITE LIVE!</strong></div>
+            <div class="download-title" id="download-title">Download<br><strong>IGNITE LIVE!</strong></div>
 
             <div class="store-buttons" id="store-buttons">
               <a class="store-button apple-badge" id="ios-button" href="https://apps.apple.com/us/app/ignite-live/id6752860309" rel="noopener">
@@ -882,10 +928,8 @@
             </div>
 
             <div class="qr-shell" aria-label="QR code area">
-              <img src="ignite-live-qr.png" alt="QR code linking back to this fireworks landing page">
             </div>
-            <p class="qr-note">Share this page with neighbors or scan this QR code to reopen it later.</p>
-          </section>
+</section>
 
           <aside class="panel code-panel" aria-labelledby="code-title">
             <div class="code-label" id="code-title">Enter Show Code:</div>
