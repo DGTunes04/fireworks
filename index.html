@@ -769,33 +769,13 @@
       100% { transform: scale(15); opacity: 0; box-shadow: 0 0 0 3px currentColor; }
     }
 
-
-    /* Show-code clipping fix */
-    .main-grid {
-      grid-template-columns: minmax(0, .82fr) minmax(0, 1.15fr) minmax(0, .9fr);
-    }
-
-    .main-grid > *,
-    .panel,
-    .code-panel {
-      min-width: 0;
-    }
-
-    .code {
-      font-size: clamp(3.6rem, 8.4vw, 5.65rem);
-      letter-spacing: .025em;
-      white-space: nowrap;
-      width: 100%;
-      text-align: center;
-    }
-
     @media (max-width: 900px) {
       .main-grid,
       .gold-grid,
       .community-grid,
       .checklist,
       .donation-inner {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: 1fr;
       }
 
       .listen-panel { display: none; }
@@ -920,7 +900,8 @@
           </div>
         </section>
 
-        <section class="panel donation" aria-labelledby="support-title">
+        <a href="https://venmo.com/u/DGTunes" target="_blank" rel="noopener noreferrer"
+style="display:block;text-decoration:none;color:inherit;cursor:pointer;"><section class="panel donation" aria-labelledby="support-title">
           <div class="donation-top">Enjoying the Show?</div>
           <div class="donation-inner">
             <div class="donation-copy">
@@ -934,7 +915,7 @@
               <div class="venmo-label">@DGTunes on Venmo</div>
             </div>
           </div>
-        </section>
+        </section></a>
 
         <section class="panel sponsor" aria-labelledby="sponsor-title">
           <div class="sponsor-heading" id="sponsor-title">🇺🇸 Proud Sponsors of the Hawks Crossing Fireworks Display</div>
