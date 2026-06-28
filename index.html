@@ -14,16 +14,13 @@
       --red: #cf1f2e;
       --red-dark: #a9101d;
       --white: #ffffff;
-      --cream: #fffaf4;
       --ink: #10212b;
       --muted: #63717c;
       --soft: #f3f7fb;
       --shadow: 0 22px 70px rgba(6, 28, 70, .18);
-      --radius: 30px;
     }
 
     * { box-sizing: border-box; }
-
     html { scroll-behavior: smooth; }
 
     body {
@@ -60,6 +57,35 @@
         linear-gradient(145deg, transparent 0 60%, rgba(207,31,46,.08) 60% 62%, transparent 62%),
         radial-gradient(circle at 50% -6%, rgba(207,31,46,.10), transparent 22rem);
       pointer-events: none;
+    }
+
+    .hero-fireworks {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      opacity: .9;
+    }
+
+    .burst {
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, transparent 0 20%, rgba(207,31,46,.9) 21% 23%, transparent 24%),
+        conic-gradient(from 0deg, transparent 0 8deg, rgba(207,31,46,.9) 9deg 11deg, transparent 12deg 28deg, rgba(0,70,111,.9) 29deg 31deg, transparent 32deg 55deg, rgba(207,31,46,.9) 56deg 58deg, transparent 59deg 88deg, rgba(0,70,111,.9) 89deg 91deg, transparent 92deg 130deg, rgba(207,31,46,.9) 131deg 133deg, transparent 134deg 180deg, rgba(0,70,111,.9) 181deg 183deg, transparent 184deg 230deg, rgba(207,31,46,.9) 231deg 233deg, transparent 234deg 300deg, rgba(0,70,111,.9) 301deg 303deg, transparent 304deg);
+      mask: radial-gradient(circle, transparent 0 22%, #000 23% 66%, transparent 67%);
+      animation: floatBurst 6s ease-in-out infinite;
+    }
+
+    .burst.one { left: 10%; top: 10%; transform: scale(.72); }
+    .burst.two { right: 10%; top: 9%; transform: scale(.78); animation-delay: 1.5s; }
+    .burst.three { left: 46%; top: 3%; transform: scale(.45); animation-delay: 2.5s; opacity: .55; }
+
+    @keyframes floatBurst {
+      0%, 100% { opacity: .55; transform: translateY(0) scale(.72); }
+      50% { opacity: .95; transform: translateY(-6px) scale(.78); }
     }
 
     .top-stars {
@@ -114,6 +140,15 @@
       margin-top: 8px;
       color: var(--red);
       font-size: .72em;
+    }
+
+    .event-date {
+      margin: 10px auto 0;
+      color: var(--navy);
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: clamp(1rem, 3vw, 1.45rem);
     }
 
     .ribbon {
@@ -206,6 +241,9 @@
       background:
         radial-gradient(circle at top, rgba(207,31,46,.06), transparent 15rem),
         white;
+      display: grid;
+      align-content: center;
+      min-height: 100%;
     }
 
     .download-title {
@@ -217,9 +255,7 @@
       margin-bottom: 14px;
     }
 
-    .download-title strong {
-      color: var(--red);
-    }
+    .download-title strong { color: var(--red); }
 
     .device-note {
       display: none;
@@ -234,9 +270,10 @@
 
     .store-buttons {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: 12px;
-      margin-bottom: 18px;
+      max-width: 360px;
+      margin: 0 auto;
     }
 
     .store-button {
@@ -244,8 +281,8 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 60px;
-      border-radius: 16px;
+      min-height: 76px;
+      border-radius: 18px;
       background: #050505;
       color: white;
       text-decoration: none;
@@ -253,6 +290,14 @@
       font-weight: 850;
       box-shadow: 0 10px 22px rgba(0,0,0,.14);
       transition: transform .15s ease, box-shadow .15s ease;
+      animation: gentlePulse 2.8s ease-in-out infinite;
+    }
+
+    .store-button:nth-child(2) { animation-delay: .35s; }
+
+    @keyframes gentlePulse {
+      0%, 100% { transform: translateY(0); box-shadow: 0 10px 22px rgba(0,0,0,.14); }
+      50% { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(0,0,0,.21); }
     }
 
     .store-button:hover,
@@ -263,59 +308,33 @@
     }
 
     .store-button .icon {
-      font-size: 1.65rem;
+      font-size: 2rem;
       line-height: 1;
     }
 
     .store-button small {
       display: block;
       opacity: .84;
-      font-size: .72rem;
+      font-size: .82rem;
       line-height: 1;
     }
 
     .store-button span:last-child {
       text-align: left;
-      font-size: 1.05rem;
+      font-size: 1.28rem;
       line-height: 1.1;
     }
 
-    .qr-shell {
-      background: white;
-      border: 5px solid var(--navy);
-      border-radius: 24px;
-      padding: 14px;
-      width: min(100%, 390px);
-      margin: 0 auto;
-      box-shadow: 0 14px 32px rgba(6,28,70,.13);
-    }
-
-    .qr-shell img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: contain;
-      background: white;
-      border-radius: 10px;
-    }
-
-    .qr-placeholder {
-      width: 100%;
-      aspect-ratio: 1;
-      background:
-        linear-gradient(90deg, #000 12px, transparent 12px) 0 0/34px 34px,
-        linear-gradient(#000 12px, transparent 12px) 0 0/34px 34px,
-        white;
-      border: 12px solid white;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .qr-note {
-      margin: 12px 0 0;
-      color: var(--muted);
-      font-weight: 750;
-      font-size: .96rem;
+    .download-reminder {
+      margin: 18px auto 0;
+      max-width: 430px;
+      background: rgba(207,31,46,.08);
+      color: var(--navy);
+      border: 1px solid rgba(207,31,46,.18);
+      border-radius: 18px;
+      padding: 14px 16px;
+      font-weight: 900;
+      line-height: 1.35;
     }
 
     .code-panel {
@@ -337,11 +356,12 @@
     .code {
       background: var(--navy);
       color: white;
-      font-size: clamp(4.2rem, 9vw, 6.2rem);
+      font-size: clamp(5.2rem, 11vw, 7.4rem);
       line-height: 1;
-      padding: 18px 14px 22px;
+      padding: 24px 14px 28px;
       font-weight: 1000;
       letter-spacing: .04em;
+      text-shadow: 0 0 18px rgba(255,255,255,.35), 0 6px 18px rgba(0,0,0,.22);
     }
 
     .steps {
@@ -512,9 +532,7 @@
         radial-gradient(circle at 88% 80%, rgba(0,70,111,.12), transparent 14rem);
     }
 
-    .donation-copy {
-      text-align: left;
-    }
+    .donation-copy { text-align: left; }
 
     .donation-copy h2 {
       margin: 0 0 12px;
@@ -565,6 +583,150 @@
       letter-spacing: .055em;
     }
 
+    .sponsor {
+      margin-top: 22px;
+      padding: 0;
+      overflow: hidden;
+      background: white;
+      border: 2px solid rgba(6,28,70,.12);
+    }
+
+    .sponsor-heading {
+      background: linear-gradient(90deg, var(--navy), var(--blue), var(--navy));
+      color: white;
+      text-align: center;
+      padding: 20px 18px;
+      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: .045em;
+      font-size: clamp(1.15rem, 3.5vw, 2rem);
+      line-height: 1.18;
+    }
+
+    .sponsor-body {
+      padding: clamp(22px, 4vw, 38px);
+      background:
+        radial-gradient(circle at 14% 16%, rgba(207,31,46,.10), transparent 14rem),
+        radial-gradient(circle at 86% 84%, rgba(0,70,111,.10), transparent 14rem),
+        white;
+    }
+
+    .sponsor-tier-label {
+      display: inline-block;
+      margin: 0 auto 14px;
+      background: var(--red);
+      color: white;
+      border-radius: 999px;
+      padding: 8px 16px;
+      text-transform: uppercase;
+      font-weight: 950;
+      letter-spacing: .06em;
+      font-size: .84rem;
+    }
+
+    .presenting-sponsor {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .sponsor-card {
+      background: rgba(255,255,255,.96);
+      border: 4px solid var(--navy);
+      border-radius: 26px;
+      box-shadow: 0 16px 36px rgba(6,28,70,.13);
+      padding: clamp(16px, 3vw, 24px);
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sponsor-card::before {
+      content: "★ ★ ★";
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      color: rgba(207,31,46,.16);
+      letter-spacing: .25em;
+      font-size: 1rem;
+      pointer-events: none;
+    }
+
+    .presenting-sponsor .sponsor-card {
+      border-width: 5px;
+      padding: clamp(18px, 3vw, 28px);
+    }
+
+    .presenting-sponsor img {
+      display: block;
+      width: min(100%, 560px);
+      height: auto;
+    }
+
+    .gold-sponsors {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .gold-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 30px;
+    }
+
+    .gold-card { min-height: 270px; }
+
+    .wayne-card img {
+      width: min(100%, 560px);
+      height: auto;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .g2-card img {
+      width: min(100%, 430px);
+      height: auto;
+      display: block;
+    }
+
+    .community-sponsors { text-align: center; }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .community-card {
+      min-height: 210px;
+      padding: 18px;
+    }
+
+    .community-card img {
+      display: block;
+      max-width: 100%;
+      max-height: 150px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .community-card.splash {
+      background: #061c46;
+    }
+
+    .community-card.splash::before {
+      color: rgba(255,255,255,.18);
+    }
+
+    .community-card.splash img {
+      max-height: 120px;
+    }
+
     .bottom-wave {
       margin-top: 24px;
       height: 96px;
@@ -590,54 +752,6 @@
       font-size: .95rem;
     }
 
-    @media (max-width: 900px) {
-      .main-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .listen-panel {
-        display: none;
-      }
-
-      .store-buttons,
-      .checklist,
-      .donation-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .donation-copy {
-        text-align: center;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .page {
-        width: min(100% - 18px, 1120px);
-        padding-top: 10px;
-      }
-
-      .hero-inner {
-        padding-left: 14px;
-        padding-right: 14px;
-      }
-
-      .star.left, .star.right {
-        opacity: .26;
-      }
-
-      .ribbon {
-        padding: 15px 12px;
-      }
-
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .showtime strong {
-        font-size: 4.7rem;
-      }
-    }
-  
     .firework {
       position: fixed;
       width: 8px;
@@ -653,232 +767,41 @@
       100% { transform: scale(15); opacity: 0; box-shadow: 0 0 0 3px currentColor; }
     }
 
-  
-    .sponsor {
-      margin-top: 22px;
-      padding: 0;
-      overflow: hidden;
-      background:
-        linear-gradient(135deg, rgba(6,28,70,.05), rgba(207,31,46,.06)),
-        white;
-      border: 2px solid rgba(6,28,70,.12);
-    }
-
-    .sponsor-inner {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 22px;
-      align-items: center;
-      padding: clamp(20px, 4vw, 34px);
-    }
-
-    .sponsor-copy {
-      text-align: left;
-    }
-
-    .sponsor-kicker {
-      display: inline-block;
-      background: var(--red);
-      color: white;
-      border-radius: 999px;
-      padding: 8px 13px;
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .05em;
-      font-size: .86rem;
-      margin-bottom: 12px;
-    }
-
-    .sponsor-copy h2 {
-      color: var(--navy);
-      margin: 0 0 10px;
-      text-transform: uppercase;
-      font-size: clamp(1.9rem, 5vw, 3rem);
-      line-height: 1;
-    }
-
-    .sponsor-copy p {
-      margin: 0;
-      color: var(--ink);
-      font-weight: 680;
-      line-height: 1.5;
-      font-size: 1.05rem;
-    }
-
-    .sponsor-logo-card {
-      background: white;
-      border: 5px solid var(--navy);
-      border-radius: 26px;
-      padding: 18px;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 18px 38px rgba(6,28,70,.14);
-    }
-
-    .sponsor-logo-card img {
-      display: block;
-      max-width: min(100%, 430px);
-      height: auto;
-    }
-
     @media (max-width: 900px) {
-      .sponsor-inner {
+      .main-grid,
+      .gold-grid,
+      .community-grid,
+      .checklist,
+      .donation-inner {
         grid-template-columns: 1fr;
       }
 
-      .sponsor-copy {
-        text-align: center;
-      }
-    }
-
-  
-    .hero-fireworks {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      opacity: .9;
-    }
-
-    .burst {
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      background:
-        radial-gradient(circle, transparent 0 20%, rgba(207,31,46,.9) 21% 23%, transparent 24%),
-        conic-gradient(from 0deg, transparent 0 8deg, rgba(207,31,46,.9) 9deg 11deg, transparent 12deg 28deg, rgba(0,70,111,.9) 29deg 31deg, transparent 32deg 55deg, rgba(207,31,46,.9) 56deg 58deg, transparent 59deg 88deg, rgba(0,70,111,.9) 89deg 91deg, transparent 92deg 130deg, rgba(207,31,46,.9) 131deg 133deg, transparent 134deg 180deg, rgba(0,70,111,.9) 181deg 183deg, transparent 184deg 230deg, rgba(207,31,46,.9) 231deg 233deg, transparent 234deg 300deg, rgba(0,70,111,.9) 301deg 303deg, transparent 304deg);
-      mask: radial-gradient(circle, transparent 0 22%, #000 23% 66%, transparent 67%);
-      animation: floatBurst 6s ease-in-out infinite;
-    }
-
-    .burst.one { left: 10%; top: 10%; transform: scale(.72); }
-    .burst.two { right: 10%; top: 9%; transform: scale(.78); animation-delay: 1.5s; }
-    .burst.three { left: 46%; top: 3%; transform: scale(.45); animation-delay: 2.5s; opacity: .55; }
-
-    @keyframes floatBurst {
-      0%, 100% { opacity: .55; transform: translateY(0) scale(.72); }
-      50% { opacity: .95; transform: translateY(-6px) scale(.78); }
-    }
-
-    .hero-inner::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 40px;
-      width: min(760px, 84vw);
-      height: 260px;
-      transform: translateX(-50%);
-      background: radial-gradient(ellipse, rgba(207,31,46,.13), rgba(0,70,111,.10) 45%, transparent 72%);
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .event-date {
-      margin: 10px auto 0;
-      color: var(--navy);
-      font-weight: 950;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: clamp(1rem, 3vw, 1.45rem);
-    }
-
-    .store-button {
-      min-height: 68px;
-      border-radius: 14px;
-      animation: gentlePulse 2.8s ease-in-out infinite;
-    }
-
-    .store-button:nth-child(2) {
-      animation-delay: .35s;
-    }
-
-    @keyframes gentlePulse {
-      0%, 100% { transform: translateY(0); box-shadow: 0 10px 22px rgba(0,0,0,.14); }
-      50% { transform: translateY(-2px); box-shadow: 0 16px 30px rgba(0,0,0,.21); }
-    }
-
-    .download-reminder {
-      margin: 16px 0 0;
-      background: rgba(207,31,46,.08);
-      color: var(--navy);
-      border: 1px solid rgba(207,31,46,.16);
-      border-radius: 16px;
-      padding: 13px 15px;
-      font-weight: 850;
-      line-height: 1.35;
-    }
-
-    .store-button.apple-badge .icon {
-      font-size: 2rem;
-    }
-
-    .store-button.google-badge .icon {
-      font-size: 1.85rem;
-      color: #34a853;
-    }
-
-    .code {
-      text-shadow: 0 0 18px rgba(255,255,255,.35), 0 6px 18px rgba(0,0,0,.22);
-    }
-
-    .sponsor {
-      margin-top: 22px;
+      .listen-panel { display: none; }
+      .donation-copy { text-align: center; }
+      .gold-card,
+      .community-card { min-height: auto; }
     }
 
     @media (max-width: 520px) {
+      .page {
+        width: min(100% - 18px, 1120px);
+        padding-top: 10px;
+      }
+
+      .hero-inner {
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .star.left, .star.right { opacity: .26; }
       .burst.one { left: -8%; top: 7%; }
       .burst.two { right: -8%; top: 7%; }
       .burst.three { display: none; }
+      .ribbon { padding: 15px 12px; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+      .showtime strong { font-size: 4.7rem; }
       .event-date { letter-spacing: .04em; }
     }
-
-  
-    .download-panel {
-      display: grid;
-      align-content: center;
-      min-height: 100%;
-    }
-
-    .store-buttons {
-      grid-template-columns: 1fr;
-      max-width: 360px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 0;
-    }
-
-    .store-button {
-      min-height: 76px;
-      border-radius: 18px;
-    }
-
-    .store-button small {
-      font-size: .82rem;
-    }
-
-    .store-button span:last-child {
-      font-size: 1.28rem;
-    }
-
-    .download-reminder {
-      margin: 18px auto 0;
-      max-width: 430px;
-      background: rgba(207,31,46,.08);
-      color: var(--navy);
-      border: 1px solid rgba(207,31,46,.18);
-      border-radius: 18px;
-      padding: 14px 16px;
-      font-weight: 900;
-      line-height: 1.35;
-    }
-
-    .code {
-      font-size: clamp(5.2rem, 11vw, 7.4rem);
-      padding-top: 24px;
-      padding-bottom: 28px;
-    }
-
   </style>
 </head>
 
@@ -890,6 +813,7 @@
         <span class="burst two"></span>
         <span class="burst three"></span>
       </div>
+
       <div class="top-stars" aria-hidden="true">
         <span class="star left">★</span>
         <span class="star right">★</span>
@@ -927,9 +851,8 @@
               </a>
             </div>
 
-            <div class="qr-shell" aria-label="QR code area">
-            </div>
-</section>
+            <div class="download-reminder">Download the app before 9:15 PM for the best experience.</div>
+          </section>
 
           <aside class="panel code-panel" aria-labelledby="code-title">
             <div class="code-label" id="code-title">Enter Show Code:</div>
@@ -974,7 +897,8 @@
             <p>Keep the app open once you're connected and ready to listen.</p>
           </div>
         </section>
-<section class="panel donation" aria-labelledby="support-title">
+
+        <section class="panel donation" aria-labelledby="support-title">
           <div class="donation-top">Enjoying the Show?</div>
           <div class="donation-inner">
             <div class="donation-copy">
@@ -990,22 +914,44 @@
           </div>
         </section>
 
-
-
         <section class="panel sponsor" aria-labelledby="sponsor-title">
-          <div class="sponsor-inner">
-            <div class="sponsor-copy">
-              <span class="sponsor-kicker">Sponsored By</span>
-              <h2 id="sponsor-title">iBounce Rentals</h2>
-              <p>Thank you to iBounce Rentals for helping make the Hawks Crossing 4th of July fireworks display possible.</p>
+          <div class="sponsor-heading" id="sponsor-title">🇺🇸 Proud Sponsors of the Hawks Crossing Fireworks Display</div>
+          <div class="sponsor-body">
+            <div class="presenting-sponsor">
+              <div class="sponsor-tier-label">Presenting Sponsor</div>
+              <div class="sponsor-card">
+                <img src="ibounce-logo.png" alt="iBounce Rentals logo">
+              </div>
             </div>
-            <div class="sponsor-logo-card">
-              <img src="ibounce-logo.png" alt="iBounce Rentals logo">
+
+            <div class="gold-sponsors">
+              <div class="sponsor-tier-label">Gold Sponsors</div>
+              <div class="gold-grid">
+                <div class="sponsor-card gold-card wayne-card">
+                  <img src="wayne-bartley-dream-maker.png" alt="Wayne Bartley, Dream Maker Realty">
+                </div>
+                <div class="sponsor-card gold-card g2-card">
+                  <img src="g2-comfort-solutions.png" alt="G2 Comfort Solutions logo">
+                </div>
+              </div>
+            </div>
+
+            <div class="community-sponsors">
+              <div class="sponsor-tier-label">Community Sponsors</div>
+              <div class="community-grid">
+                <div class="sponsor-card community-card">
+                  <img src="brashers-fencing.png" alt="Brasher's Fencing logo">
+                </div>
+                <div class="sponsor-card community-card">
+                  <img src="conxion-gym.svg" alt="Conxion Gym logo">
+                </div>
+                <div class="sponsor-card community-card splash">
+                  <img src="splash-pools.jpg" alt="Splash Pools logo">
+                </div>
+              </div>
             </div>
           </div>
         </section>
-
-        
 
         <div class="bottom-wave" aria-hidden="true">★★★★★</div>
       </div>
@@ -1061,6 +1007,7 @@
         document.getElementById("minutes").textContent = "0";
         document.getElementById("seconds").textContent = "0";
         message.textContent = "It's showtime! Open IGNITE LIVE! and enjoy the fireworks.";
+
         if (!showtimeEffectsStarted) {
           showtimeEffectsStarted = true;
           setInterval(launchTinyFirework, 900);
