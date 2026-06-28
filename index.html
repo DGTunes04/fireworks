@@ -696,7 +696,7 @@
 
     .community-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 16px;
       align-items: stretch;
     }
@@ -727,6 +727,11 @@
     .community-card.splash img {
       max-height: 125px;
       max-width: 82%;
+    }
+
+    .community-card.waters img {
+      max-height: 155px;
+      max-width: 74%;
     }
 
     .bottom-wave {
@@ -769,13 +774,33 @@
       100% { transform: scale(15); opacity: 0; box-shadow: 0 0 0 3px currentColor; }
     }
 
+
+    /* Show-code clipping fix */
+    .main-grid {
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.15fr) minmax(0, .9fr);
+    }
+
+    .main-grid > *,
+    .panel,
+    .code-panel {
+      min-width: 0;
+    }
+
+    .code {
+      font-size: clamp(3.6rem, 8.4vw, 5.65rem);
+      letter-spacing: .025em;
+      white-space: nowrap;
+      width: 100%;
+      text-align: center;
+    }
+
     @media (max-width: 900px) {
       .main-grid,
       .gold-grid,
       .community-grid,
       .checklist,
       .donation-inner {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .listen-panel { display: none; }
@@ -804,6 +829,16 @@
       .showtime strong { font-size: 4.7rem; }
       .event-date { letter-spacing: .04em; }
     }
+  
+    .donation {
+      cursor: pointer;
+    }
+
+    .donation:focus-within,
+    .donation:hover {
+      box-shadow: 0 18px 42px rgba(6,28,70,.13);
+    }
+
   </style>
 </head>
 
@@ -900,8 +935,7 @@
           </div>
         </section>
 
-        <a href="https://venmo.com/u/DGTunes" target="_blank" rel="noopener noreferrer"
-style="display:block;text-decoration:none;color:inherit;cursor:pointer;"><section class="panel donation" aria-labelledby="support-title">
+        <section class="panel donation" aria-labelledby="support-title">
           <div class="donation-top">Enjoying the Show?</div>
           <div class="donation-inner">
             <div class="donation-copy">
@@ -915,7 +949,7 @@ style="display:block;text-decoration:none;color:inherit;cursor:pointer;"><sectio
               <div class="venmo-label">@DGTunes on Venmo</div>
             </div>
           </div>
-        </section></a>
+        </section>
 
         <section class="panel sponsor" aria-labelledby="sponsor-title">
           <div class="sponsor-heading" id="sponsor-title">🇺🇸 Proud Sponsors of the Hawks Crossing Fireworks Display</div>
@@ -950,6 +984,9 @@ style="display:block;text-decoration:none;color:inherit;cursor:pointer;"><sectio
                 </div>
                 <div class="sponsor-card community-card splash">
                   <img src="splash-pools.jpg" alt="Splash Pools logo">
+                </div>
+                <div class="sponsor-card community-card waters">
+                  <img src="waters-pool-co.png" alt="Waters Pool Co. logo">
                 </div>
               </div>
             </div>
@@ -1031,6 +1068,24 @@ style="display:block;text-decoration:none;color:inherit;cursor:pointer;"><sectio
 
     updateCountdown();
     setInterval(updateCountdown, 1000);
+  
+    document.addEventListener("DOMContentLoaded", () => {
+      const donation = document.querySelector(".donation");
+      if (donation) {
+        donation.setAttribute("role", "link");
+        donation.setAttribute("tabindex", "0");
+        donation.setAttribute("aria-label", "Donate through Venmo to DGTunes");
+        donation.addEventListener("click", () => {
+          window.open("https://venmo.com/u/DGTunes", "_blank", "noopener,noreferrer");
+        });
+        donation.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            window.open("https://venmo.com/u/DGTunes", "_blank", "noopener,noreferrer");
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>
