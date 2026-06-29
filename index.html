@@ -894,6 +894,25 @@
       color: var(--red);
     }
 
+  
+    .sponsor-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .sponsor-link .sponsor-card {
+      transition: transform .18s ease, box-shadow .18s ease;
+      cursor: pointer;
+    }
+
+    .sponsor-link:hover .sponsor-card,
+    .sponsor-link:focus .sponsor-card {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 46px rgba(6,28,70,.18);
+      outline: none;
+    }
+
   </style>
 </head>
 
@@ -1011,9 +1030,9 @@
           <div class="sponsor-body">
             <div class="presenting-sponsor">
               <div class="sponsor-tier-label">Presenting Sponsor</div>
-              <div class="sponsor-card">
+              <a class="sponsor-link" href="https://www.ibouncerentals.com" target="_blank" rel="noopener noreferrer" aria-label="Visit iBounce Rentals website"><div class="sponsor-card">
                 <img src="ibounce-logo.png" alt="iBounce Rentals logo">
-              </div>
+              </div></a>
             </div>
 
 
@@ -1030,15 +1049,15 @@
             <div class="gold-sponsors">
               <div class="sponsor-tier-label">Gold Sponsors</div>
               <div class="gold-grid">
-                <div class="sponsor-card gold-card wayne-card">
+                <a class="sponsor-link" href="wayne.html" aria-label="Open Wayne Bartley contact page"><div class="sponsor-card gold-card wayne-card">
                   <img src="wayne-bartley-dream-maker.png" alt="Wayne Bartley, Dream Maker Realty">
-                </div>
-                <div class="sponsor-card gold-card g2-card">
+                </div></a>
+                <a class="sponsor-link" href="https://g2comfort.com" target="_blank" rel="noopener noreferrer" aria-label="Visit G2 Comfort Solutions website"><div class="sponsor-card gold-card g2-card">
                   <img src="g2-comfort-solutions.png" alt="G2 Comfort Solutions logo">
-                </div>
-                <div class="sponsor-card gold-card">
+                </div></a>
+                <a class="sponsor-link" href="https://www.conxiongym.com" target="_blank" rel="noopener noreferrer" aria-label="Visit ConXion Gym website"><div class="sponsor-card gold-card">
                   <img src="conxion-gym.svg" alt="Conxion Gym logo">
-                </div>
+                </div></a>
               </div>
             </div>
 
@@ -1048,9 +1067,9 @@
                 <div class="sponsor-card community-card">
                   <img src="brashers-fencing.png" alt="Brasher's Fencing logo">
                 </div>
-                <div class="sponsor-card community-card splash">
+                <a class="sponsor-link" href="https://www.splashpoolshernando.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Splash Pools website"><div class="sponsor-card community-card splash">
                   <img src="splash-pools.jpg" alt="Splash Pools logo">
-                </div>
+                </div></a>
                 <div class="sponsor-card community-card waters">
                   <img src="waters-pool-co.png" alt="Waters Pool Co. logo">
                 </div>

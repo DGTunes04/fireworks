@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wayne Bartley | Dream Maker Realty</title>
+  <meta name="description" content="Contact Wayne Bartley with Dream Maker Realty, Gold Sponsor of the Hawks Crossing Fireworks Display.">
+  <meta name="theme-color" content="#061c46">
+  <style>
+    :root {
+      --navy: #061c46;
+      --blue: #00466f;
+      --red: #cf1f2e;
+      --red-dark: #a9101d;
+      --ink: #10212b;
+      --muted: #63717c;
+      --shadow: 0 22px 70px rgba(6, 28, 70, .18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(207,31,46,.16), transparent 18rem),
+        radial-gradient(circle at 88% 10%, rgba(0,70,111,.18), transparent 18rem),
+        linear-gradient(180deg, #ffffff 0%, #f4f8fc 100%);
+      display: grid;
+      place-items: center;
+      padding: 20px;
+    }
+
+    .card {
+      width: min(760px, 100%);
+      background: #fff;
+      border-radius: 34px;
+      overflow: hidden;
+      border: 1px solid rgba(6,28,70,.12);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .top {
+      background: linear-gradient(90deg, var(--navy), var(--blue), var(--navy));
+      color: #fff;
+      padding: 24px 20px;
+      text-transform: uppercase;
+      font-weight: 1000;
+      letter-spacing: .05em;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+    }
+
+    .inner {
+      padding: clamp(24px, 5vw, 42px);
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--navy);
+      font-size: clamp(2.3rem, 8vw, 4.5rem);
+      line-height: .95;
+      text-transform: uppercase;
+      font-weight: 1000;
+    }
+
+    h2 {
+      margin: 8px 0 22px;
+      color: var(--red);
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .sponsor-img {
+      width: min(100%, 520px);
+      border-radius: 22px;
+      border: 4px solid var(--navy);
+      box-shadow: 0 14px 34px rgba(6,28,70,.14);
+      margin: 0 auto 22px;
+      display: block;
+    }
+
+    .note {
+      font-size: 1.08rem;
+      line-height: 1.55;
+      font-weight: 650;
+      color: var(--ink);
+      max-width: 580px;
+      margin: 0 auto 22px;
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 22px auto 0;
+      max-width: 560px;
+    }
+
+    .button {
+      display: grid;
+      place-items: center;
+      min-height: 64px;
+      border-radius: 18px;
+      color: white;
+      text-decoration: none;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      transition: transform .18s ease, box-shadow .18s ease;
+      padding: 14px;
+    }
+
+    .button:hover,
+    .button:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(6,28,70,.2);
+      outline: none;
+    }
+
+    .call { background: var(--red); }
+    .email { background: var(--navy); }
+
+    .contact-small {
+      display: block;
+      margin-top: 4px;
+      font-size: .82rem;
+      opacity: .86;
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: 750;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 28px;
+      color: var(--navy);
+      font-weight: 900;
+      text-decoration: none;
+    }
+
+    .back:hover { text-decoration: underline; }
+
+    @media (max-width: 620px) {
+      .cta-grid { grid-template-columns: 1fr; }
+      .inner { padding-left: 18px; padding-right: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="top">Gold Sponsor</div>
+    <div class="inner">
+      <h1>Wayne Bartley</h1>
+      <h2>Dream Maker Realty</h2>
+
+      <img class="sponsor-img" src="wayne-bartley-dream-maker.png" alt="Wayne Bartley, Dream Maker Realty">
+
+      <p class="note">
+        Proud Gold Sponsor of the 2026 Hawks Crossing Fireworks Display.
+      </p>
+
+      <p class="note">
+        Buying or selling a home? Wayne would love the opportunity to help.
+      </p>
+
+      <div class="cta-grid">
+        <a class="button call" href="tel:9015501351">
+          Call Wayne
+          <span class="contact-small">901-550-1351</span>
+        </a>
+
+        <a class="button email" href="mailto:bartwb@aol.com">
+          Email Wayne
+          <span class="contact-small">bartwb@aol.com</span>
+        </a>
+      </div>
+
+      <a class="back" href="index.html">← Back to the Fireworks Page</a>
+    </div>
+  </main>
+</body>
+</html>
