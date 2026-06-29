@@ -839,6 +839,48 @@
       box-shadow: 0 18px 42px rgba(6,28,70,.13);
     }
 
+  
+    .platinum-sponsors {
+      max-width: 860px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+
+    .platinum-sponsor-link {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .platinum-card {
+      border-color: #cf1f2e;
+      border-width: 5px;
+      padding: clamp(18px, 3vw, 30px);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .platinum-card:hover,
+    .platinum-card:focus {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 46px rgba(6,28,70,.18);
+      outline: none;
+    }
+
+    .platinum-card img {
+      display: block;
+      width: min(100%, 520px);
+      height: auto;
+    }
+
+    .platinum-note {
+      margin-top: 12px;
+      color: var(--navy);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .045em;
+      font-size: .9rem;
+    }
+
   </style>
 </head>
 
@@ -959,6 +1001,17 @@
               <div class="sponsor-card">
                 <img src="ibounce-logo.png" alt="iBounce Rentals logo">
               </div>
+            </div>
+
+
+            <div class="platinum-sponsors">
+              <div class="sponsor-tier-label">Platinum Sponsor</div>
+              <a class="platinum-sponsor-link" href="https://www.youtube.com/@JK_Happenings" target="_blank" rel="noopener noreferrer" aria-label="Visit JK Happenings YouTube Channel">
+                <div class="sponsor-card platinum-card">
+                  <img src="jk-happenings.png" alt="JK Happenings YouTube Channel logo">
+                  <div class="platinum-note">Visit JK Happenings on YouTube</div>
+                </div>
+              </a>
             </div>
 
             <div class="gold-sponsors">
