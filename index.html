@@ -913,6 +913,20 @@
       outline: none;
     }
 
+  
+    .community-card.picketpro {
+      background: #061c46;
+    }
+
+    .community-card.picketpro::before {
+      color: rgba(255,255,255,.16);
+    }
+
+    .community-card.picketpro img {
+      max-height: 130px;
+      max-width: 95%;
+    }
+
   </style>
 </head>
 
@@ -1064,9 +1078,11 @@
             <div class="community-sponsors">
               <div class="sponsor-tier-label">Community Sponsors</div>
               <div class="community-grid">
-                <div class="sponsor-card community-card">
-                  <img src="brashers-fencing.png" alt="Brasher's Fencing logo">
-                </div>
+                <a class="sponsor-link" href="https://picketpro.net" target="_blank" rel="noopener noreferrer" aria-label="Visit The PicketPro Fence Tool website">
+                  <div class="sponsor-card community-card picketpro">
+                    <img src="picketpro.png" alt="The PicketPro Fence Tool logo">
+                  </div>
+                </a>
                 <a class="sponsor-link" href="https://www.splashpoolshernando.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Splash Pools website"><div class="sponsor-card community-card splash">
                   <img src="splash-pools.jpg" alt="Splash Pools logo">
                 </div></a>
